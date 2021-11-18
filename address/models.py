@@ -46,5 +46,5 @@ class AddressModel(models.Model):
 
     class Meta:
         db_table = 'ADDRESS'
-        verbose_name = 'Address'
-        verbose_name_plural = 'Addresses'
+        verbose_name = 'Endereço'
+        verbose_name_plural = 'Endereços'

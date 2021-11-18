@@ -31,5 +31,5 @@ class CustomerModel(models.Model):
 
     class Meta:
         db_table = 'CUSTOMER'
-        verbose_name = 'Customer'
-        verbose_name_plural = 'Customers'
+        verbose_name = 'Cliente'
+        verbose_name_plural = 'Clientes'

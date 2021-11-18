@@ -45,5 +45,5 @@ class OrderModel(TimeStampedModel):
 
     class Meta:
         db_table = 'ORDER'
-        verbose_name = 'Order'
-        verbose_name_plural = 'Orders'
+        verbose_name = 'Pedido'
+        verbose_name_plural = 'Pedidos'
