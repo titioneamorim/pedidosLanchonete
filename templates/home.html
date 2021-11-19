@@ -3,14 +3,14 @@
 {% block container  %}
     
         
-        <div class="card text-white bg-primary mb-3" id="clientes" style="width:180px; height:180px;max-width: 18rem; margin:10px; box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.37); border-radius:15px;">
+        <div class="card text-white bg-primary mb-3" id="clientes" style="width:180px; height:180px;max-width: 18rem; margin:10px; box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.37); border-radius:15px; cursor: pointer;">
             <p style="padding-top:75px;text-align:center; vertical-align: middle;"> Clientes </p>
         </div>
-        <div class="card text-white bg-primary mb-3" id="pedidos" style="width:180px; height:180px;max-width: 18rem; margin:10px; box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.37); border-radius:15px;">
+        <div class="card text-white bg-primary mb-3" id="pedidos" style="width:180px; height:180px;max-width: 18rem; margin:10px; box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.37); border-radius:15px; cursor: pointer;">
             <p style="padding-top:75px;text-align:center; vertical-align: middle;"> Pedidos </p>
         </div>
 
-        <div class="card text-white bg-primary mb-3" id="produtos"  style="width:180px; height:180px; max-width: 18rem; margin:10px; box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.37);border-radius:15px;">
+        <div class="card text-white bg-primary mb-3" id="products"  style="width:180px; height:180px; max-width: 18rem; margin:10px; box-shadow:7px 7px 5px 0px rgba(50, 50, 50, 0.37);border-radius:15px; cursor: pointer;">
             <p style="padding-top:75px; text-align:center; vertical-align: middle;">Produtos</div>
         </div>
 
@@ -21,8 +21,8 @@
             document.getElementById("pedidos").onclick = function(){
                 window.location.href="";
             }
-            document.getElementById("produtos").onclick = function(){
-                window.location.href="";
+            document.getElementById("products").onclick = function(){
+                window.location.href="{% url 'home_products'%}";
             }
         </script>
 
