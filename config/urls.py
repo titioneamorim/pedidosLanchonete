@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'home.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home, name="home"),
+    # path('', include('customer.urls')),
+    # path('', include('order.urls')),
+    # path('', include('payment.urls')),
+    # path('', include('product.urls')),
+    # path('', include('product.urls')),
 ]
+

@@ -31,3 +31,4 @@ class ProductModel(models.Model):
         db_table = 'PRODUCT'
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
+        
