@@ -24,10 +24,10 @@ def home(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
-    # path('', include('customer.urls')),
+    path('', include('customer.urls')),
     # path('', include('order.urls')),
     # path('', include('payment.urls')),
     # path('', include('product.urls')),
-    # path('', include('product.urls')),
+    # path('', include('address.urls')),
 ]
 

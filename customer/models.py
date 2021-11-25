@@ -20,7 +20,7 @@ class CustomerModel(models.Model):
 
     phone = models.CharField(
         db_column="PHONE",
-        max_length=10,
+        max_length=16,
         unique=True,
     )
 
