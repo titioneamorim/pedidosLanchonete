@@ -1,0 +1,50 @@
+
+
+    <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="help-block with-errors"></div>
+        
+        <div class="modal-header">
+            <h4 class="modal-title">Adicionar cliente</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <br />
+            <div class="modal-body">
+                <form method="POST" action="{% url 'save_customer'%}" data-toggle="validator">
+                        {% csrf_token %}
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Nome *</label> 
+                                    <div class="col-8">
+                                    <input id="name" value="{{request.POST.nome}}"  name="name" placeholder="Nome" type="text" class="form-control" required>
+                                    </div>
+                            </div>
+                            <br />
+                                <div class="form-group row">
+                                    <label for="phone" class="col-4 col-form-label">Telefone *</label> 
+                                        <div class="col-8">
+                                        <input id="phone" value="{{request.POST.phone}}" name="phone" type="text"  placeholder="Telefone" class="form-control" required>
+                                        </div>
+                                </div>
+                                
+                            <br />
+                            
+                                <div class="form-group row">
+                                    <div class="offset-4 col-8" style="align-items:right;">
+                                        <button name="submit" type="submit" class="btn btn-primary">Salvar</button>
+                                    
+                                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" style="margin-left:55px;" >Cancelar</button>
+                                </div>
+                            
+                </form>
+        </div>
+
+       
+
+        </div>
+    </div>
+    </div>
+
+
+
+ </div>

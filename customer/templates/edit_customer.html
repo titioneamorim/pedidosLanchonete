@@ -7,7 +7,7 @@
     <div style="justify-content:center; display:flex; margin-bottom:15px; width:100%;">
         <form method="POST" action="{% url 'update_customer' customer.id%}" data-toggle="validator" style="max-width:550px;">
             {% csrf_token %}
-                <input id="id" value="{{customer.id}}"  name="id" type="text" class="form-control">
+                <input id="id" value="{{customer.id}}"  name="id" type="text" class="form-control" hidden>
                 <div class="form-group row">
                     <label for="name" class="col-4 col-form-label">Nome *</label> 
                         <div class="col-8">

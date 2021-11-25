@@ -29,6 +29,7 @@ def add_customer_screen(request):
 
 def save_customer(request):
     serializer = CustomerSerializer(data=request.POST)
+    
     if not serializer.is_valid():
         messages.warning(request, "Erro ao cadastrar cliente")
         return HttpResponseRedirect('/clientes/')        
@@ -54,3 +55,8 @@ def update_customer(request, id:uuid):
         serializer.save()
         messages.success(request, "Cliente "+ request.POST.get('name') +" alterado com sucesso")    
     return HttpResponseRedirect('/clientes/')
+
+def search_customer_by_therm(request):
+    therm = request.GET.get('therm')
+    customers = __SERVICE.search_customer_by_therm(therm)
+    return render(request, 'customer.html', context={'customers':customers})

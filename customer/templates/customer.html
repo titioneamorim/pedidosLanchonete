@@ -9,10 +9,10 @@
 
 {% include 'partials/messages.html' %}
 
-    <div style="justify-content:center; display:flex; margin-bottom:15px; width:100%;">
-                {% comment %} <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'consulta_produtos' %}"> {% endcomment %}
-                <form class="form-inline my-2 my-lg-0" style="justify-content:center; display:flex; " method="GET" action="">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisa" aria-label="Search" name="termo" value="{{ request.GET.termo }}">
+    <div style="justify-content:center; display:flex; margin-bottom:15px; width:100%; padding-top:20px;">
+                
+                <form class="form-inline my-2 my-lg-0" style="justify-content:center; display:flex; " method="GET" action="{% url 'search_customer' %}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisa" aria-label="Search" name="therm" value="{{ request.GET.termo }}">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left:15px;">
                             Pesquisar
                         </button>
@@ -86,54 +86,7 @@
 
   </nav>
 
-     <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="help-block with-errors"></div>
-        
-        <div class="modal-header">
-            <h4 class="modal-title">Adicionar cliente</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <br />
-            <div class="modal-body">
-                <form method="POST" action="{% url 'save_customer'%}" data-toggle="validator">
-                        {% csrf_token %}
-                            <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">Nome *</label> 
-                                    <div class="col-8">
-                                    <input id="name" value="{{request.POST.nome}}"  name="name" placeholder="Nome" type="text" class="form-control" required>
-                                    </div>
-                            </div>
-                            <br />
-                                <div class="form-group row">
-                                    <label for="phone" class="col-4 col-form-label">Telefone *</label> 
-                                        <div class="col-8">
-                                        <input id="phone" value="{{request.POST.phone}}" name="phone" type="text"  placeholder="Telefone" class="form-control" required>
-                                        </div>
-                                </div>
-                                
-                            <br />
-                            
-                                <div class="form-group row">
-                                    <div class="offset-4 col-8" style="align-items:right;">
-                                        <button name="submit" type="submit" class="btn btn-primary">Salvar</button>
-                                    
-                                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" style="margin-left:55px;" >Cancelar</button>
-                                </div>
-                            
-                </form>
-        </div>
-
-       
-
-        </div>
-    </div>
-    </div>
-
-
-
- </div>
+    {% include 'partials/modal_customer.html' %}
 
  <script type="text/javascript">
   $(document).ready(() => {

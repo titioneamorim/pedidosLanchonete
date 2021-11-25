@@ -1,6 +1,6 @@
 from django.urls import path
 
-from customer.views import customer_home, delete_customer, save_customer, update_customer, update_customer_screen
+from customer.views import customer_home, delete_customer, save_customer, search_customer_by_therm, update_customer, update_customer_screen
 
 namespace = 'clientes'
 
@@ -10,6 +10,7 @@ urlpatterns = [
     path('clientes/altera/<uuid:id>/', update_customer, name="update_customer"),
     path('clientes/alterar/<uuid:id>/', update_customer_screen, name="edit_customer"),
     path('clientes/<uuid:id>/', delete_customer, name="remove_customer"),
+    path('clientes/busca/', search_customer_by_therm, name="search_customer"),
     # path('produtos/', home_produtos, name="home_produtos"),
     # path('produtos/busca/', busca_produto, name="consulta_produtos"),
     # path('produtos/adicionar', tela_adicao_produto, name="tela_adiciona_produto"),

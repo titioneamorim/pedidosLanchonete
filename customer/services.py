@@ -2,6 +2,7 @@ import uuid
 from django.db.models import Q, Value
 from .serializers import CustomerSerializer
 from .models import CustomerModel
+from django.db.models import Q, Value
 
 
 class CustomerServices():
@@ -17,3 +18,6 @@ class CustomerServices():
 
     def delete_customer(self, customer_id):
         return CustomerModel.objects.filter(id=customer_id).delete()
+
+    def search_customer_by_therm(self, therm) -> list[CustomerModel]:
+        return CustomerModel.objects.filter(Q(name__icontains=therm) | Q(phone__icontains=therm))
