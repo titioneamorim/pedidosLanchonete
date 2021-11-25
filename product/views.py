@@ -35,7 +35,15 @@ def edit_product(request, id:uuid):
     return render(request, 'home-edit-product.html', context={"product":product})
 
 def save_product(request, id:uuid):
-    return 
+    serializer = ProductSerializer(data=request.POST)
+    if not serializer.is_valid():
+        messages.error(request, serializer.errors)
+    else:
+        serializer.data('price').replace[',','.']
+        serializer.save()
+    products = _SERVICE.search_all_products()
+    return render(request, 'home-products.html', context={"products":products})
+
 class ProductSearchView(APIView):
     def get(self, request):
         term = request.GET.get('term')
