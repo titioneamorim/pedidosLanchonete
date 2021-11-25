@@ -27,7 +27,12 @@ urlpatterns = [
     path('', include('customer.urls')),
     # path('', include('order.urls')),
     # path('', include('payment.urls')),
+<<<<<<< HEAD
     # path('', include('product.urls')),
     # path('', include('address.urls')),
+=======
+    path('', include('product.urls')),
+    # path('', include('product.urls')),
+>>>>>>> d82739d99c77c75324e27d94a3d059640b9df059
 ]
 

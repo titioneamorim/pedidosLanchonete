@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+{% include 'partials/messages.html' %}
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Adicionar</button>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="50%">Nome</th>
+      <th width="30%">Preço</th>
+      <th width="20%"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for p in products %}
+    <tr>
+      <td>{{p.name}}</td>
+      <td>{{p.price}}</td>
+      <td>
+          <div class="dropdown">
+            <button class="card text-white bg-primary mb-3" type="submit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:60px; height:30px; box-shadow:3px 3px 2px 0px rgba(50, 50, 50, 0.37); border-radius:8px;">
+              Ações
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" method="POST" href="{% url 'delete_products' p.id %}">Deletar</a>{% csrf_token %}
+              <a class="dropdown-item" method="GET" href="{% url 'home_edit_product' p.id %}">Editar</a>
+            </div>
+          </div>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% include 'product-add.html' %}
+{% endblock container %}

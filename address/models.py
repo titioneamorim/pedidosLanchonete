@@ -1,6 +1,8 @@
 from django.db import models
 import uuid
 
+##teste##
+
 
 class AddressModel(models.Model):
     id = models.UUIDField(

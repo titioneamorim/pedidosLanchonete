@@ -1,9 +1,6 @@
 from django.db import models
 import uuid
 
-# Create your models here.
-
-
 class ProductModel(models.Model):
     id = models.UUIDField(
         db_column="ID",
@@ -25,10 +22,10 @@ class ProductModel(models.Model):
     )
 
     def __str__(self) -> str:
-        return f"ID: {self.id}; Produto: {self.name};"
+        return f"Id: {self.id}; Produto: {self.name}; Preço: {self.price};"
 
     class Meta:
         db_table = 'PRODUCT'
-        verbose_name = 'Produto'
-        verbose_name_plural = 'Produtos'
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
         
