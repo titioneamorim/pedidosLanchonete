@@ -1,52 +1,64 @@
 import uuid
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib import messages
+
+from product.models import ProductModel
 from .service import ProductService
 from .serializers import ProductSerializer
-from rest_framework.views import APIView
+from django.http.response import HttpResponseRedirect
+from django.core.paginator import Paginator
+import locale
+
+
 
 _SERVICE = ProductService()
 
-def home_products(request, id:uuid=None):
-    if id is not None:
-        _SERVICE.delete_product_for_id(id)
-    elif request.method == "POST" and id is None:
-        serializer = ProductSerializer(data=request.POST)
-        if not serializer.is_valid():
-            messages.error(request, serializer.errors)
-        else:
-            serializer.data('price').replace[',','.']
-            serializer.save()
+def product_home(request):
     products = _SERVICE.search_all_products()
-    return render(request, 'home-products.html', context={"products":products})
+    page = request.GET.get('p')
+    paginator = Paginator(products, 5)
+    products = paginator.get_page(page)
+    return render(request, 'home-products.html', context={'products':products})
 
-def edit_product(request, id:uuid):
-    product = _SERVICE.search_product_for_id(id)
-    
-    if request.method == "GET":
-        return render(request, 'home-edit-product.html', context={"product":product})
+def delete_product(request, id):
+    _SERVICE.delete_product_for_id(id)
+    messages.success(request,"Produto removido com sucesso!")
+    return HttpResponseRedirect('/products/') 
 
+def update_product_screen(request, id):
+    product = _SERVICE.search_product_by_id(id)
+    return render(request, 'edit-product.html', context={'product':product})
+
+def save_product(request):
+    serializer = ProductSerializer(data=request.POST)
+
+    # current_price = request(ProductModel.price)
+    # standart_price = locale.format("%.2f", current_price, grouping=True, monetary=True)
+    # request = standart_price
+
+    if not serializer.is_valid():
+        messages.warning(request, "Erro ao cadastrar produto")
+        return HttpResponseRedirect('/products/')        
+    serializer.save()
+    messages.success(request,"Produto "+ request.POST.get('name') +" salvo com sucesso.")
+    return HttpResponseRedirect('/products/')  
+
+def search_product_by_therm(request):
+    therm = request.GET.get('therm')
+    products = _SERVICE.search_products_by_therm(therm)
+    return render(request, 'home-products.html', context={'products':products})
+
+def add_product_screen(request):
+    return render(request, 'product-add.html')
+
+def update_product(request, id:uuid):
+    product = _SERVICE.search_product_by_id(id)
     serializer = ProductSerializer(product, request.POST)
     if not serializer.is_valid():
-        messages.error(request, serializer.errors)
+        messages.error(request, serializer)
     else:
         serializer.save()
-        messages.success(request, "Produto salvo com sucesso")
-    return render(request, 'home-edit-product.html', context={"product":product})
+        messages.success(request, "Produto "+ request.POST.get('name') +" alterado com sucesso")    
+    return HttpResponseRedirect('/products/')
 
-def save_product(request, id:uuid):
-    serializer = ProductSerializer(data=request.POST)
-    if not serializer.is_valid():
-        messages.error(request, serializer.errors)
-    else:
-        serializer.data('price').replace[',','.']
-        serializer.save()
-    products = _SERVICE.search_all_products()
-    return render(request, 'home-products.html', context={"products":products})
-
-class ProductSearchView(APIView):
-    def get(self, request):
-        term = request.GET.get('term')
-        products = _SERVICE.search_products_by_term(term)
-        return render(request, 'home-products.html', context={'products': products})
 

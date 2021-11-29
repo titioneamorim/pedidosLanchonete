@@ -12,7 +12,7 @@ class ProductModel(models.Model):
 
     name = models.CharField(
         db_column="NAME",
-        max_length=100
+        max_length=100,
     )
 
     price = models.DecimalField(
