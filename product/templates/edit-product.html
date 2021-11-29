@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div class="container-lg">
+    <div style="justify-content:center; display:flex; margin-bottom:15px; width:100%;">
+        <form method="POST" action="{% url 'update_product' product.id%}" data-toggle="validator" style="max-width:550px;"> {% csrf_token %}
+            <input id="id" value="{{product.id}}"  name="id" type="text" class="form-control" hidden>
+            <div class="form-group row">
+                <label for="name" class="col-4 col-form-label">Nome</label> 
+                <div class="col-8">
+                    <input id="name" value="{{product.name}}"  name="name" placeholder="Nome" type="text" class="form-control" required>
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <label for="price" class="col-4 col-form-label">Preço</label> 
+                <div class="col-8">
+                    <input id="price" value="{{product.price}}" name="price" type="text" class="form-control" required onchange="this.value = this.value.replace(/,/g, '.')">
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <div>
+                    <button name="submit" type="submit" class="btn btn-primary">Salvar</button>       
+                    <a type="button" class="btn btn-secondary" href="{% url 'home_products' %}">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock container %}
