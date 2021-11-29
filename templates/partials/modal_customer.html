@@ -10,13 +10,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <br />
+        <h5 style="text-align:center;"> Dados do cliente </h5>
             <div class="modal-body">
                 <form method="POST" action="{% url 'save_customer'%}" data-toggle="validator">
                         {% csrf_token %}
                             <div class="form-group row">
                                 <label for="name" class="col-4 col-form-label">Nome *</label> 
                                     <div class="col-8">
-                                    <input id="name" value="{{request.POST.nome}}"  name="name" placeholder="Nome" type="text" class="form-control" required>
+                                    <input id="name" value="{{request.POST.name}}"  name="name" placeholder="Nome" type="text" class="form-control" required>
                                     </div>
                             </div>
                             <br />
@@ -26,14 +27,65 @@
                                         <input id="phone" value="{{request.POST.phone}}" name="phone" type="text"  placeholder="Telefone" class="form-control" required>
                                         </div>
                                 </div>
-                                
                             <br />
+
+                            <h5 style="text-align:center;"> Endereço de entrega </h5>
+          
+                <div class="form-group row">
+                    <label for="CEP" class="col-4 col-form-label">CEP</label> 
+                        <div class="col-8">
+                            <input id="cep" value="{{request.POST.cep}}" name="cep" type="text"  placeholder="Cep" class="form-control">
+                        </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <label for="street" class="col-4 col-form-label">Rua</label> 
+                        <div class="col-8">
+                            <input id="street" value="{{request.POST.street}}" name="street" type="text"  placeholder="Rua" class="form-control">
+                        </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <label for="number" class="col-4 col-form-label">Número</label> 
+                        <div class="col-8">
+                           <input id="number" value="{{request.POST.number}}" name="number" type="text"  placeholder="Número" class="form-control">
+                        </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <label for="complement" class="col-4 col-form-label">Complemento</label> 
+                        <div class="col-8">
+                            <input id="complement" value="{{request.POST.complement}}" name="complement" type="text"  placeholder="Complemento" class="form-control">
+                        </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <label for="district" class="col-4 col-form-label">Bairro</label> 
+                        <div class="col-8">
+                            <input id="district" value="{{request.POST.district}}" name="district" type="text"  placeholder="Bairro" class="form-control">
+                        </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <label for="city" class="col-4 col-form-label">Município</label> 
+                        <div class="col-8">
+                            <input id="city" value="{{request.POST.city}}" name="city" type="text"  placeholder="Município" class="form-control">
+                        </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <label for="city" class="col-4 col-form-label">Estado</label> 
+                        <div class="col-8">
+                            <input id="state" value="{{request.POST.state}}" name="state" type="text"  placeholder="Estado" class="form-control">
+                        </div>
+                </div>
+                <br />
                             
                                 <div class="form-group row">
                                     <div class="offset-4 col-8" style="align-items:right;">
                                         <button name="submit" type="submit" class="btn btn-primary">Salvar</button>
                                     
-                                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" style="margin-left:55px;" >Cancelar</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="margin-left:55px;" >Cancelar</button>
                                 </div>
                             
                 </form>
@@ -47,4 +99,5 @@
 
 
 
+ </div>
  </div>

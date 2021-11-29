@@ -15,7 +15,7 @@ class AddressModel(models.Model):
 
     street = models.CharField(
         db_column="STREET",
-        max_length=20
+        max_length=50
     )
 
     number = models.CharField(
@@ -33,9 +33,9 @@ class AddressModel(models.Model):
         max_length=20
     )
 
-    CEP = models.CharField(
+    cep = models.CharField(
         db_column="CEP",
-        max_length=9
+        max_length=10
     )
 
     complement = models.CharField(
