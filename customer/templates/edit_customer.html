@@ -6,8 +6,9 @@
 <div class="container-lg">
      <h5 style="text-align:center;"> Dados do cliente </h5>
             <div class="modal-body">
-                <form method="POST" action="{% url 'save_customer'%}" data-toggle="validator">
+                <form method="POST" action="{% url 'update_customer' customer.id%}" data-toggle="validator">
                         {% csrf_token %}
+                            
                             <div class="form-group row">
                                 <label for="name" class="col-4 col-form-label">Nome *</label> 
                                     <div class="col-8">
@@ -28,42 +29,42 @@
                 <div class="form-group row">
                     <label for="CEP" class="col-4 col-form-label">CEP</label> 
                         <div class="col-8">
-                            <input id="cep" value="{{customer.address.cep}}" name="cep" type="text"  placeholder="Cep" class="form-control">
+                            <input id="cep" value="{{customer.address.0.cep}}" name="cep" type="text"  placeholder="Cep" class="form-control">
                         </div>
                 </div>
                 <br />
                 <div class="form-group row">
                     <label for="street" class="col-4 col-form-label">Rua</label> 
                         <div class="col-8">
-                            <input id="street" value="{{customer.address.street}}" name="street" type="text"  placeholder="Rua" class="form-control">
+                            <input id="street" value="{{customer.address.0.street}}" name="street" type="text"  placeholder="Rua" class="form-control">
                         </div>
                 </div>
                 <br />
                 <div class="form-group row">
                     <label for="number" class="col-4 col-form-label">Número</label> 
                         <div class="col-8">
-                           <input id="number" value="{{customer.address}}" name="number" type="text"  placeholder="Número" class="form-control">
+                           <input id="number" value="{{customer.address.0.number}}" name="number" type="text"  placeholder="Número" class="form-control">
                         </div>
                 </div>
                 <br />
                 <div class="form-group row">
                     <label for="complement" class="col-4 col-form-label">Complemento</label> 
                         <div class="col-8">
-                            <input id="complement" value="{{customer.address.complement}}" name="complement" type="text"  placeholder="Complemento" class="form-control">
+                            <input id="complement" value="{{customer.address.0.complement}}" name="complement" type="text"  placeholder="Complemento" class="form-control">
                         </div>
                 </div>
                 <br />
                 <div class="form-group row">
                     <label for="district" class="col-4 col-form-label">Bairro</label> 
                         <div class="col-8">
-                            <input id="district" value="{{customer.address.district}}" name="district" type="text"  placeholder="Bairro" class="form-control">
+                            <input id="district" value="{{customer.address.0.district}}" name="district" type="text"  placeholder="Bairro" class="form-control">
                         </div>
                 </div>
                 <br />
                 <div class="form-group row">
                     <label for="city" class="col-4 col-form-label">Município</label> 
                         <div class="col-8">
-                            <input id="city" value="{{customer.address.city}}" name="city" type="text"  placeholder="Município" class="form-control">
+                            <input id="city" value="{{customer.address.0.city}}" name="city" type="text"  placeholder="Município" class="form-control">
                         </div>
                 </div>
                 <br />
@@ -72,7 +73,7 @@
                                     <div class="offset-4 col-8" style="align-items:right;">
                                         <button name="submit" type="submit" class="btn btn-primary">Salvar</button>
                                     
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="margin-left:55px;" >Cancelar</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="margin-left:55px;" onclick= "history.go(-1)">Cancelar</button>
                                 </div>
                             
                 </form>
@@ -82,6 +83,7 @@
 </div>
 
 <script type="text/javascript">
+    
   $(document).ready(() => {
       $('#cep').mask('99999-999');
       $('#phone').mask('(99) 9 9999-9999');

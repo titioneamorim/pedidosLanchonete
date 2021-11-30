@@ -7,5 +7,5 @@ from rest_framework import serializers
 class AdressSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddressModel
-        fields = ('street', 'number', 'district', 'city', 'cep', 'complement',)
+        exclude = ('complement',)
     

@@ -24,7 +24,7 @@ class CustomerModel(models.Model):
         unique=True,
     )
 
-    address = models.ManyToManyField(AddressModel)
+    address = models.ManyToManyField(AddressModel, related_name='customer')
 
     def __str__(self) -> str:
         return f"ID: {self.id}; Cliente: {self.name};"
@@ -33,3 +33,4 @@ class CustomerModel(models.Model):
         db_table = 'CUSTOMER'
         verbose_name = 'Cliente'
         verbose_name_plural = 'Clientes'
+

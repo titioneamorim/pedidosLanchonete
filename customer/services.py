@@ -1,14 +1,10 @@
 import uuid
 from django.db.models import Q, Value
-from .serializers import CustomerSerializer
 from .models import CustomerModel
 from django.db.models import Q, Value
 
 
 class CustomerServices():
-
-    def salvar_customer(self, customer: CustomerSerializer):
-        customer.save()
 
     def search_all_customers(self) -> list[CustomerModel]:
         return CustomerModel.objects.all()
@@ -21,3 +17,7 @@ class CustomerServices():
 
     def search_customer_by_therm(self, therm) -> list[CustomerModel]:
         return CustomerModel.objects.filter(Q(name__icontains=therm) | Q(phone__icontains=therm))
+
+    def search_customer_by_phone(self, phone) -> CustomerModel:
+        return CustomerModel.objects.filter(phone = phone).first()
+    
