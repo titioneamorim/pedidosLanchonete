@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def home_order(request):
+    return render(request, 'home_order.html')
