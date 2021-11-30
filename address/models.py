@@ -40,7 +40,9 @@ class AddressModel(models.Model):
 
     complement = models.CharField(
         db_column="COMPLEMENT",
-        max_length=150
+        max_length=150,
+        null=True,
+        blank=True
     )
 
     def __str__(self) -> str:

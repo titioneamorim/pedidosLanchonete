@@ -10,6 +10,7 @@ from address.models import AddressModel
 from address.serializers import AdressSerializer
 from django.core.paginator import Paginator
 import json
+from address.services import AddressServices
 
 from customer.models import CustomerModel
 from customer.serializers import CustomerCreateSerializer, CustomerReadSerializer
@@ -17,6 +18,7 @@ from customer.services import CustomerServices
 
 
 __SERVICE = CustomerServices()
+__SERVICE_ADDRESS = AddressServices()
 
 
 def customer_home(request):
@@ -63,11 +65,15 @@ def update_customer_screen(request, id):
 
 def update_customer(request, id:uuid):
     customer = __SERVICE.search_customer_by_id(id)
-    serializer = CustomerCreateSerializer(customer, request.POST)
+    address = __SERVICE_ADDRESS.search_address_by_id(customer.id)
+    serializer_address = AdressSerializer(instance=address, data=request.POST, partial=True)
+    serializer = CustomerCreateSerializer(instance=customer, data=request.POST, partial=True)
     if not serializer.is_valid():
         messages.error(request, serializer)
     else:
         serializer.save()
+        serializer_address.is_valid()
+        serializer_address.save()
         messages.success(request, "Cliente "+ request.POST.get('name') +" alterado com sucesso")    
     return HttpResponseRedirect('/clientes/')
 
