@@ -16,5 +16,5 @@ def save_order(request):
 
 def search_order_by_therm(request):
     therm = request.GET.get('therm')
-    products = _SERVICE.search_orders_by_therm(therm)
-    return render(request, 'home-products.html', context={'products':products})
+    orders = _SERVICE.search_orders_by_therm(therm)
+    return render(request, 'home_order.html', context={'orders':orders})
