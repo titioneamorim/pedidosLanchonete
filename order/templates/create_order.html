@@ -54,52 +54,58 @@
     <label for="validationTooltip03" class="form-label">CEP</label>
     <input id="cep" value="{{customer.address.0.cep}}"  name="cep" placeholder="CEP" type="text" class="form-control" readonly>
   </div>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="margin-left:5px; padding-left:5px;">
-    <label class="form-check-label" for="flexCheckDefault"> Entrega em outro endereço</label>
+
+  <div style="justify-content:center; display:flex; margin-bottom:15px; width:100%; padding-top:20px;">
+  <input type="button" onclick="decryptfun()" value="Adicionar endereço de entrega diferente" style="width:350px">
   </div>
-  <div id="new_address" style="display:none;">
-    <form class="row g-3 needs-validation" novalidate>
+
+    <div id="new_address_form" hidden style="width:100%;">
+      <div class="col-md-3 position-relative">
+        <label for="validationTooltip03" class="form-label">CEP</label>
+        <input id="new_cep" value=""  name="new_cep" placeholder="CEP" type="text" class="form-control" >
+      </div>
       <div class="col-md-6 position-relative">
         <label for="validationTooltip03" class="form-label">Logradouro</label>
-        <input id="street" value="{{customer.address.0.street}}"  name="street" placeholder="Logradouro" type="text" class="form-control" readonly>
+        <input id="new_street" value=""  name="new_street" placeholder="Logradouro" type="text" class="form-control" >
       </div>
       <div class="col-md-3 position-relative">
         <label for="validationTooltip03" class="form-label">Número</label>
-        <input id="number" value="{{customer.address.0.number}}"  name="number" placeholder="Nº" type="text" class="form-control" readonly>
+        <input id="new_number" value=""  name="new_number" placeholder="Nº" type="text" class="form-control" >
       </div>
       <div class="col-md-3 position-relative">
         <label for="validationTooltip03" class="form-label">Complemento</label>
-        <input id="complement" value="{{customer.address.0.complement}}"  name="complement" placeholder="Complemento" type="text" class="form-control" readonly>
+        <input id="new_complement" value=""  name="new_complement" placeholder="Complemento" type="text" class="form-control" >
       </div>
       <div class="col-md-6 position-relative">
         <label for="validationTooltip03" class="form-label">Bairro</label>
-        <input id="district" value="{{customer.address.0.district}}"  name="district" placeholder="Bairro" type="text" class="form-control" readonly>
+        <input id="new_district" value=""  name="new_district" placeholder="Bairro" type="text" class="form-control" >
       </div>
       <div class="col-md-3 position-relative">
         <label for="validationTooltip03" class="form-label">Cidade</label>
-        <input id="city" value="{{customer.address.0.city}}"  name="city" placeholder="Cidade" type="text" class="form-control" readonly>
+        <input id="new_city" value=""  name="new_city" placeholder="Cidade" type="text" class="form-control" >
       </div>
-      <div class="col-md-3 position-relative">
-        <label for="validationTooltip03" class="form-label">CEP</label>
-        <input id="cep" value="{{customer.address.0.cep}}"  name="cep" placeholder="CEP" type="text" class="form-control" readonly>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="margin-left:5px; padding-left:5px;">
-        <label class="form-check-label" for="flexCheckDefault"> Entrega em outro endereço</label>
-      </div>
-    </form>
-  </div>
+    </div>
+    
+  
 </form>
 
 
+<script type="text/javascript" src="lib.js">
+    
+    $(document).ready(() => {
+      $('#therm').mask('(99) 9 9999-9999');
+    };
 
+    
 
+<script type="text/javascript" src="lib.js"></script>
+<script>
+  function decryptfun() {
+    document.getElementById('new_address_form').removeAttribute('hidden');
+  }
+</script>
 
-<script type="text/javascript">
-$(document).ready(() => {
-    $('#therm').mask('(99) 9 9999-9999');
-    } 
+    
 </script>
 
   {% endblock container %}
