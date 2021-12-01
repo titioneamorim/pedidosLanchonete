@@ -5,6 +5,7 @@ from django.db.models.fields.related import ForeignKey
 from address.models import AddressModel
 from customer.models import CustomerModel
 from product.models import ProductModel
+
 from django_extensions.db.models import TimeStampedModel
 
 
@@ -34,7 +35,7 @@ class OrderModel(TimeStampedModel):
         on_delete=models.DO_NOTHING,
     )
 
-    product = models.ManyToManyField(OrderModel, related_name='order')
+    product = models.ManyToManyField(ProductModel, related_name='order')
 
 
     def __str__(self) -> str:
