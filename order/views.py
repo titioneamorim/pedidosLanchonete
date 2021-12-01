@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .services import OrderService
 from .serializers import OrderSerializer
 from customer.services import CustomerServices
+from customer.serializers import CustomerReadSerializer
 from address.services import AddressServices
 
 _SERVICE = OrderService()
@@ -24,8 +25,8 @@ def save_order(request):
 def search_customer_by_phone(request):
     phone = request.GET.get('therm')
     customer = __CUSTOMER_SERVICE.search_customer_by_phone(phone)
-    address = __ADDRESS_SERVICE.search_address_by_id(customer.id)
-    return render(request, 'create_order.html', context={'customer':customer, 'address':address})
+    serializer = CustomerReadSerializer(instance=customer)
+    return render(request, 'create_order.html', context={'customer':serializer.data})
 
 def create_new_order(request):
 
