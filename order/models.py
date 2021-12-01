@@ -34,11 +34,8 @@ class OrderModel(TimeStampedModel):
         on_delete=models.DO_NOTHING,
     )
 
-    product = models.ForeignKey(
-        ProductModel,
-        db_column="PRODUCT_ID",
-        on_delete=models.DO_NOTHING,
-    )
+    product = models.ManyToManyField(OrderModel, related_name='order')
+
 
     def __str__(self) -> str:
         return f"ID: {self.id}; Cliente: {self.customer};"
