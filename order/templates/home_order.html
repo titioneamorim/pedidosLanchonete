@@ -8,20 +8,20 @@
 
 <div style="justify-content:center; display:flex; margin-bottom:15px; width:100%; padding-top:20px;">
                 
-  <form class="form-inline my-2 my-lg-0" style="justify-content:center; display:flex; " method="GET" action="{% url 'search_product' %}">
+  <form class="form-inline my-2 my-lg-0" style="justify-content:center; display:flex; " method="GET" action="{% url 'search_orders' %}">
     <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar Pedido" aria-label="Search" name="therm" value="{{ request.GET.termo }}">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left:15px;">Pesquisar</button>
   </form>
                     
-  <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'save_product' %}">
+  <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'save_order' %}">
     <button class="btn btn-outline-success my-2 my-sm-0" style="margin-left: 10px;" type="button" data-bs-toggle="modal" data-bs-target="#modalProduct">Adicionar</button>
   </form>
 </div>
 
 <nav aria-label="...">
     <ul class="pagination">
-      {% for pagina in products.paginator.page_range %}
-        {% if products.number == pagina %}
+      {% for pagina in orders.paginator.page_range %}
+        {% if orders.number == pagina %}
           <li class="page-item active">
             <a class="page-link" href="?p={{pagina}}&termo={{request.GET.termo}}">{{pagina}}</a>
           </li> 
