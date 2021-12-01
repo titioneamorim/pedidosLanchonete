@@ -54,7 +54,45 @@
     <label for="validationTooltip03" class="form-label">CEP</label>
     <input id="cep" value="{{customer.address.0.cep}}"  name="cep" placeholder="CEP" type="text" class="form-control" readonly>
   </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="margin-left:5px; padding-left:5px;">
+    <label class="form-check-label" for="flexCheckDefault"> Entrega em outro endereço</label>
+  </div>
+  <div id="new_address" style="display:none;">
+    <form class="row g-3 needs-validation" novalidate>
+      <div class="col-md-6 position-relative">
+        <label for="validationTooltip03" class="form-label">Logradouro</label>
+        <input id="street" value="{{customer.address.0.street}}"  name="street" placeholder="Logradouro" type="text" class="form-control" readonly>
+      </div>
+      <div class="col-md-3 position-relative">
+        <label for="validationTooltip03" class="form-label">Número</label>
+        <input id="number" value="{{customer.address.0.number}}"  name="number" placeholder="Nº" type="text" class="form-control" readonly>
+      </div>
+      <div class="col-md-3 position-relative">
+        <label for="validationTooltip03" class="form-label">Complemento</label>
+        <input id="complement" value="{{customer.address.0.complement}}"  name="complement" placeholder="Complemento" type="text" class="form-control" readonly>
+      </div>
+      <div class="col-md-6 position-relative">
+        <label for="validationTooltip03" class="form-label">Bairro</label>
+        <input id="district" value="{{customer.address.0.district}}"  name="district" placeholder="Bairro" type="text" class="form-control" readonly>
+      </div>
+      <div class="col-md-3 position-relative">
+        <label for="validationTooltip03" class="form-label">Cidade</label>
+        <input id="city" value="{{customer.address.0.city}}"  name="city" placeholder="Cidade" type="text" class="form-control" readonly>
+      </div>
+      <div class="col-md-3 position-relative">
+        <label for="validationTooltip03" class="form-label">CEP</label>
+        <input id="cep" value="{{customer.address.0.cep}}"  name="cep" placeholder="CEP" type="text" class="form-control" readonly>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="margin-left:5px; padding-left:5px;">
+        <label class="form-check-label" for="flexCheckDefault"> Entrega em outro endereço</label>
+      </div>
+    </form>
+  </div>
 </form>
+
+
 
 
 
