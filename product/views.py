@@ -32,10 +32,6 @@ def update_product_screen(request, id):
 def save_product(request):
     serializer = ProductSerializer(data=request.POST)
 
-    # current_price = request(ProductModel.price)
-    # standart_price = locale.format("%.2f", current_price, grouping=True, monetary=True)
-    # request = standart_price
-
     if not serializer.is_valid():
         messages.warning(request, "Erro ao cadastrar produto")
         return HttpResponseRedirect('/products/')        
