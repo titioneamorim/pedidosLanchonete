@@ -14,5 +14,5 @@ class OrderService():
     def save_order(self, product: OrderSerializer):
         product.save()
 
-    def search_orders_by_therm(self, therm) -> list[OrderModel]:
-        return OrderModel.objects.filter(Q(customer__name__icontains=therm) | Q(customer__phone__icontains=therm))
+    def search_customer_by_phone(self, phone) -> OrderModel:
+        return OrderModel.objects.filter(customer__phone__icontains=phone).first()

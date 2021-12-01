@@ -87,7 +87,7 @@ def delete_customer(request, id):
 def search_customer_by_therm(request):
     therm = request.GET.get('therm')
     customers = __SERVICE.search_customer_by_therm(therm)
-    print(cus)
+    # print(cus)
     return render(request, 'customer.html', context={'customers':customers})
 
 

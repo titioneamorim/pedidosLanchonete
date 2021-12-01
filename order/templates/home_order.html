@@ -8,13 +8,13 @@
 
 <div style="justify-content:center; display:flex; margin-bottom:15px; width:100%; padding-top:20px;">
                 
-  <form class="form-inline my-2 my-lg-0" style="justify-content:center; display:flex; " method="GET" action="{% url 'search_orders' %}">
+  {% comment %} <form class="form-inline my-2 my-lg-0" style="justify-content:center; display:flex; " method="GET" action="{% url 'search_orders' %}">
     <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar Pedido" aria-label="Search" name="therm" value="{{ request.GET.termo }}">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left:15px;">Pesquisar</button>
-  </form>
+  </form> {% endcomment %}
                     
-  <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'save_order' %}">
-    <button class="btn btn-outline-success my-2 my-sm-0" style="margin-left: 10px;" type="button" data-bs-toggle="modal" data-bs-target="#modalProduct">Adicionar</button>
+  <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'create_new_order' %}">
+    <button class="btn btn-outline-success my-2 my-sm-0" style="margin-left: 10px;" type="submit">Adicionar</button>
   </form>
 </div>
 

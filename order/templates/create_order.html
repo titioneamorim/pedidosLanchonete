@@ -1,2 +1,70 @@
-
 {% extends 'base.html' %}
+
+{% block container %}
+
+<div class="container-lg">
+
+{% include 'partials/messages.html' %}
+
+<div style="justify-content:center; display:flex; margin-bottom:15px; width:100%; padding-top:20px;">
+                
+  <form class="form-inline my-2 my-lg-0" style="justify-content:center; display:flex; " method="GET" action="{% url 'search_customer_to_order' %}">
+    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar Cliente" aria-label="Search" name="therm" id="phone" value="{{ request.GET.phone }}" required>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left:15px;">Pesquisar</button>
+  </form>
+</div>
+
+{% comment %} <div class="form-group row">
+  <label for="name" class="col-4 col-form-label">Nome *</label> 
+      <div class="col-8">
+      <input id="name" value="{{customer.name}}"  name="name" placeholder="Nome" type="text" class="form-control" readonly>
+      </div>
+</div> {% endcomment %}
+
+<form class="row g-3 needs-validation" novalidate>
+  <div class="col-md-6 position-relative">
+    <label for="validationTooltip01" class="form-label">Nome</label>
+    <input id="name" value="{{customer.name}}"  name="name" placeholder="Nome" type="text" class="form-control" readonly>
+  </div>
+  <div class="col-md-6 position-relative">
+    <label for="validationTooltip02" class="form-label">Telefone</label>
+    <input id="phone" value="{{customer.phone}}"  name="phone" placeholder="Telefone" type="text" class="form-control" readonly>
+  </div>
+  <div class="col-md-6 position-relative">
+    <label for="validationTooltip03" class="form-label">Logradouro</label>
+    <input id="street" value="{{address.street}}"  name="street" placeholder="Logradouro" type="text" class="form-control" readonly>
+  </div>
+  <div class="col-md-3 position-relative">
+    <label for="validationTooltip03" class="form-label">Número</label>
+    <input id="number" value="{{address.number}}"  name="number" placeholder="Nº" type="text" class="form-control" readonly>
+  </div>
+  <div class="col-md-3 position-relative">
+    <label for="validationTooltip03" class="form-label">Complemento</label>
+    <input id="complement" value="{{address.complement}}"  name="complement" placeholder="Complemento" type="text" class="form-control" readonly>
+  </div>
+  <div class="col-md-6 position-relative">
+    <label for="validationTooltip03" class="form-label">Bairro</label>
+    <input id="district" value="{{address.district}}"  name="district" placeholder="Bairro" type="text" class="form-control" readonly>
+  </div>
+  <div class="col-md-3 position-relative">
+    <label for="validationTooltip03" class="form-label">Cidade</label>
+    <input id="city" value="{{address.city}}"  name="city" placeholder="Cidade" type="text" class="form-control" readonly>
+  </div>
+  <div class="col-md-3 position-relative">
+    <label for="validationTooltip03" class="form-label">CEP</label>
+    <input id="cep" value="{{address.cep}}"  name="cep" placeholder="CEP" type="text" class="form-control" readonly>
+  </div>
+</form>
+
+
+
+<script type="text/javascript">
+$(document).ready(() => {
+    $('#therm').mask('(99) 9 9999-9999');
+    } 
+</script>
+
+  {% endblock container %}
+  
+  
+  
