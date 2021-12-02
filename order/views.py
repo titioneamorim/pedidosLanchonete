@@ -3,17 +3,19 @@ from .services import OrderService
 from .serializers import OrderSerializer
 from customer.services import CustomerServices
 from customer.serializers import CustomerReadSerializer
-from address.services import AddressServices
+from product.service import ProductService
+from django.core.paginator import Paginator
 
 _SERVICE = OrderService()
 __CUSTOMER_SERVICE = CustomerServices()
-__ADDRESS_SERVICE = AddressServices
+__PRODUCT_SERVICE = ProductService
 
 def home_order(request):
     return render(request, 'home_order.html')
 
 def create_order(request):
-    return render(request, 'create_order.html')
+    products = __PRODUCT_SERVICE.search_all_products()
+    return render(request, 'create_order.html', context={'products':products})
 
 def update_order_screen(request, id):
     order = _SERVICE.search_order_by_id(id)

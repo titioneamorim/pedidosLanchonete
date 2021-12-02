@@ -2,6 +2,7 @@ import uuid
 from .models import OrderModel
 from django.db.models import Q
 from .serializers import OrderSerializer
+from product.models import ProductModel
 
 class OrderService():
 
