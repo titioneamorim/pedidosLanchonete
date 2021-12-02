@@ -10,7 +10,7 @@ Por ser um projeto <b>Django</b>, esse projeto pode ser executado em <b>Linux, M
 
 ## Instalação
 
-Para rodar o projeto corretamente, é necessário ter instalado o <b>Python 3</b> e os seguintes compenentes:
+Para rodar o projeto corretamente, é necessário ter instalado o <a href="https://www.python.org/"><b>Python 3</b></a> e os seguintes compenentes:
 
 <p><b>Django:</b></p>
 
