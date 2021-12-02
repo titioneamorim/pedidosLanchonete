@@ -94,7 +94,9 @@
   <thead>
     <tr>
       <th width="50%">Produto</th>
-      <th width="20%">Preço</th>
+      <th width="15%">Preço</th>
+      <th width="20%" style="text-align:center">Ação</th>
+      <th width="15%">Quantidade</th>
     </tr>
   </thead>
 
@@ -103,11 +105,43 @@
       <tr>
         <td>{{p.name}}</td>
         <td>R${{p.price}}</td>
+        <td style="justify-content:center; align-items:center; display:flex;">
+          <form>
+            <button type="submit" class="btn btn-outline-danger" style="margin-right:15px;" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+              </svg>
+            </button>
+          </form>
+
+          <form>
+            <button type="submit" class="btn btn-outline-success">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>
+            </button>
+          </form>
+        </td>
+        <td>
+          
+        </td>
       </tr>
     {% endfor %}
   </tbody>
 
 </table>
+
+<div class="col-md-3 position-relative">
+  <h5>Forma de Pagamento</h5>
+  <select class="form-select" aria-label="Default select example">
+    <option selected>Selecione a forma de pagamento</option>
+    <option value="dinheiro">Dinheiro</option>
+    <option value="pix">Pix</option>
+    <option value="debito">Cartão de Débito</option>
+    <option value="cretido">Cartão de Crédito</option>
+  </select>
+</div>
+
 
 <script type="text/javascript" src="lib.js">
     

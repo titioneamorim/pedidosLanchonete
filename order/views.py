@@ -8,14 +8,13 @@ from django.core.paginator import Paginator
 
 _SERVICE = OrderService()
 __CUSTOMER_SERVICE = CustomerServices()
-__PRODUCT_SERVICE = ProductService
+__PRODUCT_SERVICE = ProductService()
 
 def home_order(request):
     return render(request, 'home_order.html')
 
 def create_order(request):
-    products = __PRODUCT_SERVICE.search_all_products()
-    return render(request, 'create_order.html', context={'products':products})
+    return render(request, 'home_order.html')
 
 def update_order_screen(request, id):
     order = _SERVICE.search_order_by_id(id)
@@ -31,5 +30,5 @@ def search_customer_by_phone(request):
     return render(request, 'create_order.html', context={'customer':serializer.data})
 
 def create_new_order(request):
-
-    return render(request, 'create_order.html')
+    products = __PRODUCT_SERVICE.search_all_products()
+    return render(request, 'create_order.html', context={'products':products})
